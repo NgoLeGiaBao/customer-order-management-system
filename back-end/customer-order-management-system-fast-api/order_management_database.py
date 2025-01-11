@@ -19,6 +19,5 @@ class OrderManagementDatabaseClient:
                 raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in environment variables.")
             
             # Create Supabase Client
-            OrderManagementDatabaseClient._instance = create_client(url, key)
-        
+            OrderManagementDatabaseClient._instance = create_client(url, key)        
         return OrderManagementDatabaseClient._instance
