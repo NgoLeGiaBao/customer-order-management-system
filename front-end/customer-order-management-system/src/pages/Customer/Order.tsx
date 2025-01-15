@@ -8,6 +8,7 @@ const Order: React.FC = () => {
     const [quantity, setQuantity] = useState<number>(1);
     const [cartItems, setCartItems] = useState<any[]>([]); // Store cart items
     const [note, setNote] = useState<string>(""); // Note for each item
+    const [searchQuery, setSearchQuery] = useState<string>(""); // Store search query
     const navigate = useNavigate();
 
     const categories = [
@@ -80,6 +81,12 @@ const Order: React.FC = () => {
     // Calculate total number of products in cart
     const totalProducts = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+    // Filter items based on search query
+    const filteredItems = items.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="flex flex-col md:flex-row h-screen">
             {/* Sidebar */}
@@ -112,31 +119,48 @@ const Order: React.FC = () => {
                         Go Back
                     </button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {items.map((item, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col items-center md:flex-row p-4 border rounded-lg shadow hover:shadow-lg"
-                        >
-                            <img
-                                src={item.image}
-                                alt={item.name}
-                                className="w-16 h-16 rounded-lg mb-4 md:mb-0 md:mr-4"
-                            />
-                            <div className="text-center md:text-left">
-                                <h3 className="text-lg font-bold">{item.name}</h3>
-                                <p className="text-sm text-gray-500">{item.description}</p>
-                                <p className="text-blue-600 font-bold">${item.price.toFixed(2)}</p>
-                            </div>
-                            <button
-                                className="mt-4 md:mt-0 ml-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                                onClick={() => handleOpenModal(item)}
-                            >
-                                +
-                            </button>
-                        </div>
-                    ))}
+
+                {/* Search Bar */}
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        placeholder="Search items..."
+                        className="w-full p-2 border rounded-lg"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                 </div>
+
+                {/* Display "No items found" if no items match the search */}
+                {filteredItems.length === 0 ? (
+                    <div className="text-center text-gray-500">No items found</div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {filteredItems.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col items-center md:flex-row p-4 border rounded-lg shadow hover:shadow-lg"
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className="w-16 h-16 rounded-lg mb-4 md:mb-0 md:mr-4"
+                                />
+                                <div className="text-center md:text-left">
+                                    <h3 className="text-lg font-bold">{item.name}</h3>
+                                    <p className="text-sm text-gray-500">{item.description}</p>
+                                    <p className="text-blue-600 font-bold">${item.price.toFixed(2)}</p>
+                                </div>
+                                <button
+                                    className="mt-4 md:mt-0 ml-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                                    onClick={() => handleOpenModal(item)}
+                                >
+                                    +
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* Modal */}
