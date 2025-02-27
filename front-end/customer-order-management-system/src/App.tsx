@@ -3,8 +3,6 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
 import Calendar from './pages/Calendar';
 import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
@@ -18,6 +16,10 @@ import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import Home from './pages/Customer/Home';
 import Order from './pages/Customer/Order';
+import TableStatusPage from './pages/Restaurant/TableStatusPage';
+import KitchenOrderManagement from './pages/Restaurant/KitchenOrderManagement';
+import SignIn from './authentication/SignIn';
+import SignUp from './authentication/SignUp';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -45,6 +47,24 @@ function App() {
         }
       />
       <Route
+        path='/signin'
+        element={
+          <>
+            <PageTitle title="Signin Page | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+            <SignIn />
+          </>
+        }
+      />
+      <Route
+        path='/signup'
+        element={
+          <>
+            <PageTitle title="Signup Page | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+            <SignUp />
+          </>
+        }
+      />
+      <Route
         path="/order"
 
         element={
@@ -54,6 +74,27 @@ function App() {
           </>
         }
       />
+      <Route
+        path="/table-management"
+
+        element={
+          <>
+            <PageTitle title="Table Stautus Page | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+            <TableStatusPage />
+          </>
+        }
+      />
+      <Route
+        path="/kitchen-order-management"
+
+        element={
+          <>
+            <PageTitle title="Kitchen Order Management | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+            <KitchenOrderManagement />
+          </>
+        }
+      />
+
       <Route
         path="*"
         element={
@@ -149,7 +190,7 @@ function App() {
                   </>
                 }
               />
-              <Route
+              {/* <Route
                 path="/auth/signin"
                 element={
                   <>
@@ -157,8 +198,8 @@ function App() {
                     <SignIn />
                   </>
                 }
-              />
-              <Route
+              /> */}
+              {/* <Route
                 path="/auth/signup"
                 element={
                   <>
@@ -166,7 +207,7 @@ function App() {
                     <SignUp />
                   </>
                 }
-              />
+              /> */}
             </Routes>
           </DefaultLayout>
         }

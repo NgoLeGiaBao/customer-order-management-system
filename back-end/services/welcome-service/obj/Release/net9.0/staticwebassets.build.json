@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "H/zpnA9N2qVR5++g6Ru5wGSF5meHjR25wWNETKw7WdA=",
+  "Source": "WelcomeService",
+  "BasePath": "_content/WelcomeService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

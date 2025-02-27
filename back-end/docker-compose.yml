@@ -1,0 +1,65 @@
+services:
+  authentication-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    networks:
+      - backend-network
+
+  welcome-service:
+    build:
+      context: ./services/welcome-service
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    networks:
+      - backend-network
+
+  ordering-service:
+    build:
+      context: ./services/ordering-service
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    networks:
+      - backend-network
+
+  payment-service:
+    build:
+      context: ./services/payment-service
+      dockerfile: Dockerfile
+    ports:
+      - "5003:80"
+    networks:
+      - backend-network
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - backend-network
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_password123
+    ports:
+      - "1433:1433"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge

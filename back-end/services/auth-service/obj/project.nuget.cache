@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "W9UCNXK8WuY=",
+  "success": true,
+  "projectFilePath": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\auth-service\\AuthService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.2\\microsoft.aspnetcore.openapi.9.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

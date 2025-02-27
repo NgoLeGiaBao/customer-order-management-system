@@ -204,6 +204,7 @@ const Settings = () => {
                     >
                       Save
                     </button>
+
                   </div>
                 </form>
               </div>

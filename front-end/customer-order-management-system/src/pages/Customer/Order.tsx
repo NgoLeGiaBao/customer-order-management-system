@@ -236,6 +236,7 @@ const Order: React.FC = () => {
                         className="bg-green-500 text-white px-6 py-2 rounded-lg"
                         onClick={() => navigate('/checkout')}
                     >
+
                         Order Now
                     </button>
                 </div>
