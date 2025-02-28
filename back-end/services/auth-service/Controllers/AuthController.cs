@@ -1,56 +1,70 @@
 using auth_service.DTO;
 using auth_service.Models;
-using auth_service.Services; 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using AuthServiceService = auth_service.Services.AuthService;
 
 namespace auth_service.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("auth-service")]
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly  AuthServiceService _authService;
+        private readonly auth_service.Services.AuthService _authService;
+        private readonly UserManager<Employee> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public AuthController(AuthServiceService authService)
+        public AuthController(auth_service.Services.AuthService authService, UserManager<Employee> userManager, RoleManager<Role> roleManager)
         {
             _authService = authService;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
-        // Đăng ký người dùng mới
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
-            var user = new Employee
+            var newUser = new Employee
             {
-                UserName = registerDto.Email,
-                Email = registerDto.Email,
-                FullName = registerDto.FullName,
-                Role = (Role)Enum.Parse(typeof(Role), registerDto.Role.ToString())
+                UserName = model.Email,
+                Email = model.Email,
+                FullName = model.FullName,
+                RoleId = model.RoleId
             };
 
-            var result = await _authService.RegisterUserAsync(user, registerDto.Password);
+            var result = await _userManager.CreateAsync(newUser, model.Password);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
 
-            if (result.Succeeded)
+            // Assign role using RoleManager
+            if (!string.IsNullOrEmpty(model.RoleId.ToString()))
             {
-                return Ok("User registered successfully");
+                var role = await _roleManager.FindByIdAsync(model.RoleId.ToString());
+                if (role == null)
+                    return BadRequest("Invalid Role ID");
+                await _userManager.AddToRoleAsync(newUser, role.Name);
             }
 
-            return BadRequest(result.Errors);
+            return Ok("User registered successfully.");
         }
 
-        // Đăng nhập và lấy token
+        // Sign in and get a token
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
             try
             {
-                var token = await _authService.LoginAsync(loginDto.Email, loginDto.Password);
+                var token = await _authService.LoginAsync(loginDto);
                 return Ok(new { Token = token });
             }
             catch (UnauthorizedAccessException)
             {
                 return Unauthorized("Invalid credentials");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
     }

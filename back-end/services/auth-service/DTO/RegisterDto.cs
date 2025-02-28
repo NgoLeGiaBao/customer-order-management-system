@@ -3,7 +3,7 @@ namespace auth_service.DTO {
     {
         public required string Email { get; set; }
         public required string Password { get; set; }
-        public required string Role { get; set; }
+        public required int RoleId { get; set; }
         public required string FullName { get; set; }
     }
 }

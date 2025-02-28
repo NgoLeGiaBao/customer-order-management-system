@@ -32,5 +32,8 @@ namespace auth_service.Data
                 .HasForeignKey(e => e.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }
