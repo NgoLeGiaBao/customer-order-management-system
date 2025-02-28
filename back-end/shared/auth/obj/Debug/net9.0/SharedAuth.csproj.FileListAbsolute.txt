@@ -1,0 +1,12 @@
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\bin\Debug\net9.0\SharedAuth.deps.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\bin\Debug\net9.0\SharedAuth.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\bin\Debug\net9.0\SharedAuth.pdb
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.GeneratedMSBuildEditorConfig.editorconfig
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.AssemblyInfoInputs.cache
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.AssemblyInfo.cs
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.csproj.CoreCompileInputs.cache
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.sourcelink.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\refint\SharedAuth.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\SharedAuth.pdb
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\auth\obj\Debug\net9.0\ref\SharedAuth.dll

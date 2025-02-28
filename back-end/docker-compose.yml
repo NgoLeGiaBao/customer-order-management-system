@@ -50,16 +50,7 @@ services:
     networks:
       - backend-network
 
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=Your_password123
-    ports:
-      - "1433:1433"
-    networks:
-      - backend-network
-
+  
 networks:
   backend-network:
     driver: bridge

@@ -1,0 +1,12 @@
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\bin\Debug\net9.0\SharedEvents.deps.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\bin\Debug\net9.0\SharedEvents.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\bin\Debug\net9.0\SharedEvents.pdb
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.GeneratedMSBuildEditorConfig.editorconfig
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.AssemblyInfoInputs.cache
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.AssemblyInfo.cs
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.csproj.CoreCompileInputs.cache
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.sourcelink.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\refint\SharedEvents.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\SharedEvents.pdb
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\shared\events\obj\Debug\net9.0\ref\SharedEvents.dll
