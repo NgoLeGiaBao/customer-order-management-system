@@ -42,7 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-            NameClaimType = ClaimTypes.NameIdentifier // 🔥 Fix issue when retrieving User.Identity.Name
+            NameClaimType = ClaimTypes.NameIdentifier 
         };
     });
 

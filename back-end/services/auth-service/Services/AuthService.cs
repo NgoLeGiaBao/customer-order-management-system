@@ -44,10 +44,16 @@ namespace auth_service.Services
                 new Claim(ClaimTypes.Email, employee.Email)
             };
 
-            if (employee.Role != null && !string.IsNullOrEmpty(employee.Role.Name))
-                claims.Add(new Claim(ClaimTypes.Role, employee.Role.Name));
+            // Lấy danh sách roles của user
+            var roles = await _userManager.GetRolesAsync(employee);
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var token = new JwtSecurityToken(
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: creds
