@@ -1,29 +1,22 @@
-# Sử dụng image base cho .NET SDK
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-
-# Đặt thư mục làm việc
 WORKDIR /src
 
-# Copy file .csproj và restore các dependency
-COPY AuthService.csproj ./
-RUN dotnet restore
-
-# Copy phần còn lại của mã nguồn
+# Copy toàn bộ mã nguồn
 COPY . ./
 
 # Build ứng dụng
-RUN dotnet build -c Release -o /app/build
+RUN dotnet build AuthService.csproj -c Release -o /app/build
 
 # Publish ứng dụng
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish AuthService.csproj -c Release -o /app/publish
 
-# Xây dựng image final
+# Tạo image final từ ASP.NET runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 EXPOSE 80
 
 # Copy từ build sang final
-COPY --from=build /app/publish ./
+COPY --from=build /app/publish ./ 
 
 # Chạy ứng dụng
 ENTRYPOINT ["dotnet", "AuthService.dll"]

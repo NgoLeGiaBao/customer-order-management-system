@@ -15,6 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Build the web host
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(80); 
+});
+
 // Configure Identity (No need for AddDefaultTokenProviders in .NET 9)
 builder.Services.AddIdentityCore<Employee>()
     .AddRoles<Role>()
@@ -123,8 +129,8 @@ using (var scope = app.Services.CreateScope())
     var roleManager = services.GetRequiredService<RoleManager<Role>>();
     
     // Seed data
-    // var seedData = services.GetRequiredService<SeedData>();
-    // await seedData.Initialize(userManager, roleManager); 
+    var seedData = services.GetRequiredService<SeedData>();
+    await seedData.Initialize(userManager, roleManager); 
 }
 
 app.Run();

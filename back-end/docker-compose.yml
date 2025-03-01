@@ -1,3 +1,5 @@
+version: '3.4'
+
 services:
   authentication-service:
     build:
@@ -7,6 +9,9 @@ services:
       - "5000:80"
     networks:
       - backend-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DefaultConnection=Server=localhost\\SQLEXPRESS;Database=db_mt_soa_authentication_service;Trusted_Connection=True;Encrypt=False
 
   welcome-service:
     build:
@@ -16,6 +21,8 @@ services:
       - "5001:80"
     networks:
       - backend-network
+    environment:
+      - DefaultConnection=Server=localhost\\SQLEXPRESS;Database=db_mt_soa_welcome_service;Trusted_Connection=True;Encrypt=False
 
   ordering-service:
     build:
@@ -25,6 +32,8 @@ services:
       - "5002:80"
     networks:
       - backend-network
+    environment:
+      - DefaultConnection=Server=localhost\\SQLEXPRESS;Database=db_mt_soa_ordering_service;Trusted_Connection=True;Encrypt=False
 
   payment-service:
     build:
@@ -34,6 +43,8 @@ services:
       - "5003:80"
     networks:
       - backend-network
+    environment:
+      - DefaultConnection=Server=localhost\\SQLEXPRESS;Database=db_mt_soa_payment_service;Trusted_Connection=True;Encrypt=False
 
   redis:
     image: redis
@@ -50,7 +61,16 @@ services:
     networks:
       - backend-network
 
-  
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourPassword
+    ports:
+      - "1433:1433"
+    networks:
+      - backend-network
+
 networks:
   backend-network:
     driver: bridge

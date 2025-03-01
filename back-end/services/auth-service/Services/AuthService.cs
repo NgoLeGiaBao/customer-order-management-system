@@ -41,7 +41,8 @@ namespace auth_service.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, employee.Id.ToString()),
-                new Claim(ClaimTypes.Email, employee.Email)
+                new Claim(ClaimTypes.Email, employee.Email),
+                new Claim("EmployeeId", employee.Id.ToString())  
             };
 
             // Lấy danh sách roles của user
@@ -62,36 +63,36 @@ namespace auth_service.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public async Task<IdentityResult> RegisterUserAsync(Employee currentUser, Employee newUser, string password)
-        {
-            if (currentUser == null || newUser == null)
-                throw new ArgumentNullException("Current user or new user cannot be null.");
+        // public async Task<IdentityResult> RegisterUserAsync(Employee currentUser, Employee newUser, string password)
+        // {
+        //     if (currentUser == null || newUser == null)
+        //         throw new ArgumentNullException("Current user or new user cannot be null.");
 
-            var isAdmin = await _userManager.IsInRoleAsync(currentUser, RoleEnum.Admin.ToString());
-            if (!isAdmin)
-                throw new UnauthorizedAccessException("Only admin users can register new accounts.");
+        //     var isAdmin = await _userManager.IsInRoleAsync(currentUser, RoleEnum.Admin.ToString());
+        //     if (!isAdmin)
+        //         throw new UnauthorizedAccessException("Only admin users can register new accounts.");
 
-            var existingUser = await _userManager.FindByEmailAsync(newUser.Email);
-            if (existingUser != null)
-                throw new Exception("User already exists");
+        //     var existingUser = await _userManager.FindByEmailAsync(newUser.Email);
+        //     if (existingUser != null)
+        //         throw new Exception("User already exists");
 
-            var roleEnumValue = (RoleEnum)newUser.RoleId;
-            var roleName = roleEnumValue.ToString();
+        //     var roleEnumValue = (RoleEnum)newUser.RoleId;
+        //     var roleName = roleEnumValue.ToString();
 
-            var roleExists = await _roleManager.RoleExistsAsync(roleName);
-            if (!roleExists)
-                throw new Exception($"Role {roleName} does not exist. Make sure roles are seeded.");
+        //     var roleExists = await _roleManager.RoleExistsAsync(roleName);
+        //     if (!roleExists)
+        //         throw new Exception($"Role {roleName} does not exist. Make sure roles are seeded.");
 
-            var result = await _userManager.CreateAsync(newUser, password);
-            if (!result.Succeeded)
-                throw new Exception($"Failed to create user: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+        //     var result = await _userManager.CreateAsync(newUser, password);
+        //     if (!result.Succeeded)
+        //         throw new Exception($"Failed to create user: {string.Join(", ", result.Errors.Select(e => e.Description))}");
 
-            var roleAssignResult = await _userManager.AddToRoleAsync(newUser, roleName);
-            if (!roleAssignResult.Succeeded)
-                throw new Exception($"Failed to assign role {roleName}: {string.Join(", ", roleAssignResult.Errors.Select(e => e.Description))}");
+        //     var roleAssignResult = await _userManager.AddToRoleAsync(newUser, roleName);
+        //     if (!roleAssignResult.Succeeded)
+        //         throw new Exception($"Failed to assign role {roleName}: {string.Join(", ", roleAssignResult.Errors.Select(e => e.Description))}");
 
-            return result;
-        }
+        //     return result;
+        // }
 
         public async Task<string> LoginAsync(LoginDto loginDto)
         {
