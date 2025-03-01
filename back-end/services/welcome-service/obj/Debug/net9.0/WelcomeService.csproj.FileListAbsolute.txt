@@ -159,3 +159,5 @@ D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\cust
 D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Debug\net9.0\StackExchange.Redis.dll

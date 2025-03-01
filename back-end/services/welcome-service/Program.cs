@@ -6,12 +6,17 @@ using Microsoft.OpenApi.Models;
 using WelcomeService.Data;
 using WelcomeService.Services;
 using WelcomeService.RabbitMQ;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure connection to the database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configure Redis
+builder.Services.AddSingleton<IConnectionMultiplexer>
+    (ConnectionMultiplexer.Connect(builder.Configuration.GetValue<string>("Redis:Configuration")));
 
 // Configure JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

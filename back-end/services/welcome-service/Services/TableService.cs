@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using StackExchange.Redis;
 using WelcomeService.Data;
 using WelcomeService.Enums;
 using WelcomeService.Models;
@@ -13,13 +11,16 @@ namespace WelcomeService.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IMessageBus _messageBus;
+        private readonly IConnectionMultiplexer _redis;
+
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public TableService(ApplicationDbContext context, IMessageBus messageBus, IHttpContextAccessor httpContextAccessor)
+        public TableService(ApplicationDbContext context, IMessageBus messageBus, IConnectionMultiplexer connectionMultiplexer, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _messageBus = messageBus;
+            _redis = connectionMultiplexer;
             _httpContextAccessor = httpContextAccessor;
         }
  
@@ -36,12 +37,30 @@ namespace WelcomeService.Services
 
         public async Task<Table> OpenTable(int tableNumber)
         {
+            // Get Redis database
+            var redisDb = _redis.GetDatabase();
+            var tableStatusKey = $"table:{tableNumber}:status";
+
+            // Check if table is already occupied
+            var statusInRedis = await redisDb.StringGetAsync(tableStatusKey);
+            if (!statusInRedis.IsNullOrEmpty && statusInRedis == TableStatus.Occupied.ToString())
+            {
+                throw new Exception($"Table {tableNumber} is already occupied.");
+            }
+
+
             var table = await _context.Tables.FirstOrDefaultAsync(t => t.TableNumber == tableNumber);
-            if (table == null) throw new Exception($"Table {tableNumber} not found.");
-            if (table.Status == TableStatus.Occupied) throw new Exception($"Table {tableNumber} is already occupied.");
+            if (table == null) 
+                throw new Exception($"Table {tableNumber} not found.");
+            
+            if (table.Status == TableStatus.Occupied) 
+                throw new Exception($"Table {tableNumber} is already occupied.");
 
             table.Status = TableStatus.Occupied;
             await _context.SaveChangesAsync();
+
+            // Set table status in Redis
+            await redisDb.StringSetAsync(tableStatusKey, TableStatus.Occupied.ToString(), TimeSpan.FromMinutes(2));
 
             // Get employee ID from token
             var employeeId = GetEmployeeIdFromToken();
@@ -60,6 +79,9 @@ namespace WelcomeService.Services
 
             table.Status = TableStatus.Available;
             await _context.SaveChangesAsync();
+
+            // Remove the key from Redis (if exists)
+            await _redis.GetDatabase().KeyDeleteAsync($"table:{tableNumber}:status");
 
             // Send event to RabbitMQ
             _messageBus.Publish("table.closed", new { TableNumber = tableNumber, Status = "Closed", Timestamp = DateTime.UtcNow });
