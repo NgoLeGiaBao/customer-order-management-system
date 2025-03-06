@@ -12,7 +12,7 @@ using order_service.Data;
 namespace OrderingService.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250301084357_Ordering_Service_V01")]
+    [Migration("20250306105239_Ordering_Service_V01")]
     partial class Ordering_Service_V01
     {
         /// <inheritdoc />
@@ -58,10 +58,11 @@ namespace OrderingService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ItemName")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MenuItemId")
+                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");

@@ -1,10 +1,8 @@
-namespace order_service.Enums {
-    public enum OrderItemStatus
+namespace order_service.Enums
+{
+    public enum OrderStatus
     {
-        Pending = 0,      
-        Preparing = 1,    
-        Ready = 2,        
-        Served = 3,      
-        Canceled = 4   
+        Open,        
+        Closed       
     }
 }

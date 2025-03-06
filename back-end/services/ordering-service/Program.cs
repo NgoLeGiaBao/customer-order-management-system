@@ -15,6 +15,9 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
+// Build the controller
+builder.Services.AddControllers(); 
+
 // Register the OrderEventHandler as a background service
 builder.Services.AddHostedService<OrderEventHandler>();
 
@@ -32,7 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = configuration["Jwt:Issuer"],
             ValidAudience = configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
         };
     });
 
@@ -92,7 +95,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Enable Authentication & Authorization middleware
+//
+// Enable map controllers, authentication, authorization, HTTPS redirection and run the app
+app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
 

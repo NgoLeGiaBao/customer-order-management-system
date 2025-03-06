@@ -1,32 +1,38 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using order_service.Enums;
 
-namespace order_service.Models;
-
-public class OrderItem
+namespace order_service.Models
 {
-    [Key]
-    public int Id { get; set; }
+    public class OrderItem
+    {
+        [Key]
+        public int Id { get; set; }
 
-    [Required]
-    [ForeignKey("Order")]
-    public int OrderId { get; set; }
+        [Required]
+        public int OrderId { get; set; }
 
-    [Required]
-    [StringLength(255)]
-    public string ItemName { get; set; } = string.Empty;
+        [Required]
+        public int MenuItemId { get; set; }
+        
+        [Required]
+        public string MenuItemName { get; set; }
+        
+        [Required]
+        [Range(1, 100)]
+        public int Quantity { get; set; }
 
-    [Required]
-    [Range(1, int.MaxValue)]
-    public int Quantity { get; set; }
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Price { get; set; }
 
-    [Required]
-    [Column(TypeName = "decimal(18,2)")]
-    public decimal Price { get; set; }
+        public OrderItemStatus Status { get; set; } = OrderItemStatus.Pending;
 
-    [Required]
-    public OrderItemStatus Status { get; set; } = OrderItemStatus.Pending;
+        [Required]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public Order? Order { get; set; }
+        [ForeignKey("OrderId")]
+        public Order Order { get; set; }
+    }
 }
