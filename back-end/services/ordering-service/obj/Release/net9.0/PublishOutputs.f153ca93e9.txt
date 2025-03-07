@@ -1,9 +1,0 @@
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\OrderingService.exe
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\appsettings.Development.json
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\appsettings.json
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\OrderingService.dll
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\OrderingService.deps.json
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\OrderingService.runtimeconfig.json
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\OrderingService.pdb
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\Microsoft.AspNetCore.OpenApi.dll
-D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\ordering-service\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
