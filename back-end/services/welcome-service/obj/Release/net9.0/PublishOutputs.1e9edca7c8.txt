@@ -1,0 +1,9 @@
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\WelcomeService.exe
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\appsettings.Development.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\appsettings.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\WelcomeService.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\WelcomeService.deps.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\WelcomeService.runtimeconfig.json
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\WelcomeService.pdb
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\Microsoft.AspNetCore.OpenApi.dll
+D:\Enterprise Service-Oriented Architecture\Middle Term Project\Source Code\customer-order-management-system\back-end\services\welcome-service\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
