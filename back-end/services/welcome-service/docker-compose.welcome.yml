@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  welcome-service:
+    build:
+      context: ./services/welcome-service
+      dockerfile: Dockerfile
+    container_name: welcome-service
+    ports:
+      - "5002:82"
+    networks:
+      - backend-network
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    environment:
+      - DefaultConnection=Server=sqlserver;Database=db_mt_soa_welcome_service;User Id=sa;Password=Strong!Pass123;Encrypt=False
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+networks:
+  backend-network:
+    driver: bridge

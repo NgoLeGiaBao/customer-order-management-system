@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "HCQ8XSnyZsL/N1gEE5/xq4Ghvx3LWaL60loWcwPgMDw=",
-  "Source": "ApiGateway",
-  "BasePath": "_content/ApiGateway",
+  "Hash": "ytXh1IkO7HvUwfBmE0TeKoe25N11qWQ3cONMig6LiTk=",
+  "Source": "api-gateway",
+  "BasePath": "_content/api-gateway",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

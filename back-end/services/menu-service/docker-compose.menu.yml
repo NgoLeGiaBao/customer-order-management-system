@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  menu-service:
+    build:
+      context: ./services/menu-service
+      dockerfile: Dockerfile
+    container_name: menu-service
+    ports:
+      - "5001:81"
+    networks:
+      - backend-network
+    depends_on:
+      - sqlserver
+
+    environment:
+      - DefaultConnection=Server=sqlserver;Database=db_mt_soa_menu_service;User Id=sa;Password=Strong!Pass123;Encrypt=False
+      
+networks:
+  backend-network:
+    driver: bridge

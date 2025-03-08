@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  ordering-service:
+    build:
+      context: ./services/ordering-service
+      dockerfile: Dockerfile
+    container_name: ordering-service
+    ports:
+      - "5003:83"
+    networks:
+      - backend-network
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    environment:
+      - DefaultConnection=Server=sqlserver;Database=db_mt_soa_ordering_service;User Id=sa;Password=Strong!Pass123;Encrypt=False
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+networks:
+  backend-network:
+    driver: bridge

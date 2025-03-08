@@ -14,10 +14,10 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-// Configure Kestrel to listen on port 83
+// Configure Kestrel to listen on port 81
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(83); 
+    options.ListenAnyIP(81); 
 });
 
 

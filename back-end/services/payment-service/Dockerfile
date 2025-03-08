@@ -12,7 +12,7 @@ RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
-EXPOSE 80
+EXPOSE 84
 
 COPY --from=build /app/publish ./
 

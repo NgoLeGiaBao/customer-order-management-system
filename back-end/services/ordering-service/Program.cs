@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using order_service.Data;
 using order_service.EventHandlers;
 using System.Text;
+using RabbitMQ.Client;  
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,18 @@ builder.Services.AddControllers();
 
 // Register the OrderEventHandler as a background service
 builder.Services.AddHostedService<OrderEventHandler>();
+
+// Configure rabbitMQ 
+// builder.Services.AddSingleton<IConnectionFactory>(sp =>
+// {
+//     var configuration = sp.GetRequiredService<IConfiguration>();
+//     var factory = new ConnectionFactory()
+//     {
+//         HostName = configuration["RabbitMQ:Host"], 
+//         Port = int.Parse(configuration["RabbitMQ:Port"])  
+//     };
+//     return factory;
+// });
 
 // Configure JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -79,7 +92,7 @@ builder.Services.AddSwaggerGen(c =>
 // Configure Kestrel to listen on port 82
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(82);  // Ensure the app listens on port 82
+    options.ListenAnyIP(83);  // Ensure the app listens on port 82
 });
 
 var app = builder.Build();

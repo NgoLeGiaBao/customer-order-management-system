@@ -33,6 +33,22 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "Microsoft.ReverseProxy/1.0.0-preview.9.21116.1": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.ReverseProxy.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.ReverseProxy.dll": {
+            "related": ".pdb"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -67,11 +83,27 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "Microsoft.ReverseProxy/1.0.0-preview.9.21116.1": {
+      "sha512": "Rn0aAwuFj/mRTPDkRxfpiuVP59Y9paUs0ltMtCeGvK/TcxrqLhIzZyhidsk78g85OOIRmjfGQdw0V7CJt340CA==",
+      "type": "package",
+      "path": "microsoft.reverseproxy/1.0.0-preview.9.21116.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/Microsoft.ReverseProxy.dll",
+        "lib/net5.0/Microsoft.ReverseProxy.pdb",
+        "lib/netcoreapp3.1/Microsoft.ReverseProxy.dll",
+        "lib/netcoreapp3.1/Microsoft.ReverseProxy.pdb",
+        "microsoft.reverseproxy.1.0.0-preview.9.21116.1.nupkg.sha512",
+        "microsoft.reverseproxy.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Microsoft.AspNetCore.OpenApi >= 9.0.2"
+      "Microsoft.AspNetCore.OpenApi >= 9.0.2",
+      "Microsoft.ReverseProxy >= 1.0.0-preview.9.21116.1"
     ]
   },
   "packageFolders": {
@@ -81,9 +113,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\api-gateway\\ApiGateway.csproj",
-      "projectName": "ApiGateway",
-      "projectPath": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\api-gateway\\ApiGateway.csproj",
+      "projectUniqueName": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\api-gateway\\api-gateway.csproj",
+      "projectName": "api-gateway",
+      "projectPath": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\api-gateway\\api-gateway.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\Enterprise Service-Oriented Architecture\\Middle Term Project\\Source Code\\customer-order-management-system\\back-end\\services\\api-gateway\\obj\\",
       "projectStyle": "PackageReference",
@@ -127,6 +159,10 @@
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[9.0.2, )"
+          },
+          "Microsoft.ReverseProxy": {
+            "target": "Package",
+            "version": "[1.0.0-preview.9.21116.1, )"
           }
         },
         "imports": [

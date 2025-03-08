@@ -81,7 +81,7 @@ builder.Services.AddSwaggerGen(options =>
 // Configure kestrel server
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(81);
+    options.ListenAnyIP(82);
 });
 
 // Configure CORS 
